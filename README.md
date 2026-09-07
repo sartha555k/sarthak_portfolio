@@ -1,6 +1,5 @@
-# sarthak-portfolio
+🌐 [View Live Portfolio](https://sarthakportfolio-one.vercel.app/)
 
-Live_URL : sarthakportfolio-one.vercel.app
 
 Personal site for Sarthak Patel. Single-page, scroll-driven, dark. Two live demos
 (Redis-style seat locking, NATS-style event bus) run entirely in the browser.
