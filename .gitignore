@@ -1,0 +1,8 @@
+node_modules
+dist
+stats.html
+.vercel
+.DS_Store
+*.local
+public/lighthouse.json
+dist-ssr

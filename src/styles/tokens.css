@@ -1,0 +1,34 @@
+:root {
+  --bg: #0a0a0b;
+  --bg-2: #111114;
+  --bg-3: #18181c;
+  --line: #26262c;
+  --text: #ededef;
+  --text-2: #9a9ba3;
+  --text-3: #85868f;      /* labels. Spec said #5f606a; lightened so 12px labels pass 4.5:1 on --bg-3 */
+  --accent: #ff3b1f;
+  --accent-2: #f5b942;
+  --ok: #3ddc84;
+  --warn: #f5b942;
+  --bad: #ff3b1f;
+  --radius: 10px;
+  --radius-lg: 18px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Hero layering: how much of the wordmark's bottom is cut away on the front copy. */
+  --hero-clip: 46%;
+
+  --font-display: 'Bebas Neue', 'Impact', 'Arial Narrow', sans-serif;
+  --font-sans: 'Inter Tight Variable', 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --gutter: 24px;
+  --max: 1280px;
+  --section-pad: clamp(96px, 14vh, 180px);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --gutter: 48px;
+  }
+}

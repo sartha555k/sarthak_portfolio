@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# VERIFY domain
+Sitemap: https://sarthakpatel.dev/sitemap.xml

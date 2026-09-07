@@ -1,0 +1,81 @@
+/* Metric-compatible fallbacks so swapping to the webfont causes no layout shift. */
+@font-face {
+  font-family: 'Inter Tight Fallback';
+  src: local('Arial');
+  size-adjust: 96%;
+  ascent-override: 92%;
+  descent-override: 23%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Bebas Fallback';
+  src: local('Arial Narrow'), local('Impact');
+  size-adjust: 88%;
+  ascent-override: 90%;
+  descent-override: 20%;
+}
+@font-face {
+  font-family: 'Mono Fallback';
+  src: local('Menlo'), local('Courier New');
+  size-adjust: 98%;
+}
+
+body {
+  font-family: var(--font-sans), 'Inter Tight Fallback';
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@media (min-width: 768px) {
+  body {
+    font-size: 17px;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display), 'Bebas Fallback';
+  font-weight: 400;
+}
+.font-mono {
+  font-family: var(--font-mono), 'Mono Fallback';
+  font-feature-settings: 'liga' 0;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), 'Mono Fallback';
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.section-title {
+  font-family: var(--font-sans), 'Inter Tight Fallback';
+  font-weight: 600;
+  font-size: clamp(32px, 4.5vw, 64px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--text);
+}
+
+.wordmark {
+  font-family: var(--font-display), 'Bebas Fallback';
+  font-size: clamp(120px, 24vw, 340px);
+  letter-spacing: 0.01em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: var(--font-mono), 'Mono Fallback';
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.mono-13 {
+  font-family: var(--font-mono), 'Mono Fallback';
+  font-size: 13px;
+}
