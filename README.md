@@ -1,5 +1,4 @@
-🌐 [View Live Portfolio](https://sarthakportfolio-one.vercel.app/)
-
+# sarthak-portfolio
 
 Personal site for Sarthak Patel. Single-page, scroll-driven, dark. Two live demos
 (Redis-style seat locking, NATS-style event bus) run entirely in the browser.
@@ -43,7 +42,7 @@ requested that is not there; the dev server reloads when a file is added or remo
 
 | Path                                            | Spec                                     |
 | ----------------------------------------------- | ---------------------------------------- |
-| `hero-cutout.png` and `hero-cutout@1x.png`      | transparent PNG, ~2400px / 1200px tall   |
+| `hero-cutout.webp` and `hero-cutout@1x.webp`    | WebP with alpha, 2000px / 1200px tall    |
 | `about-portrait.webp`                           | WebP 3:4, 1200×1600                      |
 | `work/<slug>/desktop.webp`                      | WebP 1600×1000                           |
 | `work/<slug>/mobile.webp`                       | WebP 780×1688 (390×844 @2x), optional    |

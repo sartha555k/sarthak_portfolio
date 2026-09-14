@@ -27,7 +27,7 @@ async function main() {
   const bebas = await font('@fontsource/bebas-neue/files/bebas-neue-latin-400-normal.woff')
   let inter: Buffer | null = null
   try {
-    inter = await font('@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff')
+    inter = await font('@fontsource/inter-tight/files/inter-tight-latin-400-normal.woff')
   } catch {
     /* fall back to Bebas everywhere */
   }

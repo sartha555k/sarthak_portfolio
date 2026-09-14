@@ -7,8 +7,8 @@ import { imageExists, useImageExists } from '@/lib/useImageExists'
 
 type Props = { ready: boolean }
 
-const CUTOUT = '/img/hero-cutout.png'
-const CUTOUT_1X = '/img/hero-cutout@1x.png'
+const CUTOUT = '/img/hero-cutout.webp'
+const CUTOUT_1X = '/img/hero-cutout@1x.webp'
 
 export function Hero({ ready }: Props) {
   const root = useRef<HTMLElement>(null)
@@ -31,7 +31,7 @@ export function Hero({ ready }: Props) {
           .to(gradLetters, { backgroundPosition: '100% 50%', duration: 1.2, ease: 'power2.inOut' }, 0.1)
           .add(() => back?.classList.remove('wm-grad'), 1.3)
           .fromTo('.hero-cutout', { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: 1.2 }, 0.25)
-          .fromTo('.hero-eyebrow, .hero-meta', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 }, 0.9)
+          .fromTo('.hero-meta', { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.8 }, 0.9)
 
         // Parallax + fade across the first viewport.
         const st = gsap.timeline({
@@ -54,14 +54,13 @@ export function Hero({ ready }: Props) {
 
       mm.add(REDUCED, () => {
         gsap.set('.wm-letter', { yPercent: 0 })
-        gsap.set('.hero-cutout, .hero-eyebrow, .hero-meta', { opacity: 1, scale: 1, y: 0 })
+        gsap.set('.hero-cutout, .hero-meta', { opacity: 1, scale: 1, y: 0 })
       })
 
       return () => mm.revert()
     },
     { scope: root, dependencies: [ready] },
   )
-
 
   return (
     <section
@@ -86,8 +85,6 @@ export function Hero({ ready }: Props) {
         Sarthak Patel, full-stack developer in Indore, India
       </h1>
 
-      <p className="hero-eyebrow eyebrow absolute inset-x-0 top-[26%] z-[4] text-center">── Welcome · Portfolio v1 ──</p>
-
       {/* Layer stack: back wordmark (z1) · cutout (z2) · clipped front wordmark (z3).
           Each copy gets its own wrapper because transforms create stacking contexts. */}
       <div className="hero-wordmarks absolute inset-x-0 top-[38%] z-[1] px-[2vw]">
@@ -102,15 +99,15 @@ export function Hero({ ready }: Props) {
           <div
             className="h-full w-[34vw] max-w-[380px] rounded-[40%_40%_18px_18px/22%_22%_18px_18px] bg-bg-3"
             aria-hidden="true"
-            title="Placeholder: drop public/img/hero-cutout.png here"
+            title="Placeholder: drop public/img/hero-cutout.webp here"
           />
         ) : (
           <img
             src={CUTOUT}
             srcSet={imageExists(CUTOUT_1X) ? `${CUTOUT_1X} 1x, ${CUTOUT} 2x` : undefined}
             alt=""
-            width={1200}
-            height={2400}
+            width={651}
+            height={2000}
             fetchPriority="high"
             decoding="async"
             className="h-full w-auto object-contain object-bottom"
