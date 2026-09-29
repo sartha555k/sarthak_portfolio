@@ -14,7 +14,9 @@ export type Work = {
   stack: string[]
   live?: string
   liveDomain?: string
-  source: string
+  liveLabel?: string
+  video?: string
+  source?: string
   next: string[]
   demo?: 'seatlock' | 'eventbus'
   images: { desktop: string; mobile?: string; detail?: string }
@@ -22,6 +24,58 @@ export type Work = {
 }
 
 export const work: Work[] = [
+  {
+    slug: 'personal-assistant-agent',
+    title: 'Personal Assistant Agent',
+    year: '2026',
+    type: 'AI automation',
+    role: 'Solo',
+    hook: 'One chat for search, calendar, email, tasks, notes and expenses.',
+    problem:
+      'Everyday requests are scattered across Google apps. I wanted one chat where I could ask for help in plain language and let an agent choose the right tool.',
+    approach: [
+      'Streamlit chat captures the request and posts it to an n8n webhook',
+      'An n8n AI Agent uses an OpenAI chat model and simple memory to interpret the request',
+      'The workflow selects tools for web search, Google Calendar, Gmail, Tasks, Docs and Sheets',
+      'Respond to Webhook returns the result to the same chat',
+      'An animated walkthrough shows the request moving through the workflow',
+    ],
+    hardPart:
+      'Connecting a conversational front end to a tool-using workflow while keeping the request and response in one chat. The walkthrough traces a calendar request from Streamlit, through the n8n agent and Google tool, back to the user.',
+    stack: ['n8n', 'Streamlit', 'OpenAI', 'Google APIs', 'Webhooks'],
+    live: 'https://sartha555k.github.io/n8n-ai-agent-walkthrough/',
+    liveDomain: 'sartha555k.github.io/n8n-ai-agent-walkthrough',
+    liveLabel: 'Walkthrough',
+    next: ['Add more connected tools', 'Expand the workflow examples', 'Document setup for other users'],
+    images: { desktop: '/img/work/personal-assistant-agent/desktop.webp' },
+  },
+  {
+    slug: 'jev-signal',
+    title: 'Jev Signal',
+    year: '2026',
+    type: 'Chrome extension',
+    role: 'Solo',
+    hook: 'Ask a YouTube audience one question and get evidence-backed answers from its comments.',
+    problem:
+      'A busy comment section contains useful audience feedback, but reading thousands of comments by hand makes it hard to answer a specific research question.',
+    approach: [
+      'Import YouTube comments through a Chrome extension',
+      'Give Jev a question and a set of answer choices',
+      'Classify relevant comments and exclude unrelated responses',
+      'Show an audience split alongside supporting comments',
+      'Demonstrate the workflow on the newest 1,000 comments from a video',
+    ],
+    hardPart:
+      'Keeping the result tied to the comments that support it. The demo groups responses about pricing, design, performance, AI features and camera samples, then surfaces example comments so the split can be inspected.',
+    stack: ['Chrome Extension', 'Jev', 'YouTube comments', 'AI classification'],
+    video: 'https://youtu.be/DB3aWmn3oLk',
+    next: [
+      'Explore other audience questions',
+      'Make evidence easier to review',
+      'Compare results across videos',
+    ],
+    images: { desktop: '/img/work/jev-signal/desktop.webp' },
+  },
   {
     slug: 'eventbus-services',
     title: 'eventbus-services',
@@ -135,7 +189,17 @@ msg.<span class="f">ack</span>()`,
 
 <span class="c">// Inputs dispatch through a 32ms batcher instead of on every change.</span>
 <span class="k">const</span> update <span class="p">=</span> <span class="f">useBatchedDispatch</span>(setField, <span class="n">32</span>)`,
-    stack: ['React 19', 'Vite', 'Redux Toolkit', 'Tailwind', 'Node.js', 'Express', 'MongoDB', 'OpenAI API', 'ImageKit'],
+    stack: [
+      'React 19',
+      'Vite',
+      'Redux Toolkit',
+      'Tailwind',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'OpenAI API',
+      'ImageKit',
+    ],
     live: 'https://resume-x-8s55.vercel.app',
     liveDomain: 'resume-x-8s55.vercel.app',
     source: 'https://github.com/sartha555k/ResumeX',
@@ -258,7 +322,18 @@ msg.<span class="f">ack</span>()`,
   <span class="f">score</span>(transcript)              <span class="c">// streams tokens into the feedback panel</span>
   <span class="f">show</span>(question)
 }`,
-    stack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'FastAPI', 'Whisper', 'Ollama', 'Socket.IO', 'Monaco'],
+    stack: [
+      'React',
+      'Node.js',
+      'Express',
+      'MongoDB',
+      'JWT',
+      'FastAPI',
+      'Whisper',
+      'Ollama',
+      'Socket.IO',
+      'Monaco',
+    ],
     source: 'https://github.com/sartha555k/Crack.AI',
     next: ['Interviewer personas', 'Coding round with an editor', 'Shareable score card'],
     images: { desktop: '/img/work/crack-ai/desktop.webp', mobile: '/img/work/crack-ai/mobile.webp' },

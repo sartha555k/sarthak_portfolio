@@ -5,8 +5,12 @@ import type { Work } from '@/data/work'
 import { DeviceFrame } from './DeviceFrame'
 import { cn } from '@/lib/cn'
 
-const SeatLockDemo = lazy(() => import('@/components/demos/SeatLockDemo').then((m) => ({ default: m.SeatLockDemo })))
-const EventBusDemo = lazy(() => import('@/components/demos/EventBusDemo').then((m) => ({ default: m.EventBusDemo })))
+const SeatLockDemo = lazy(() =>
+  import('@/components/demos/SeatLockDemo').then((m) => ({ default: m.SeatLockDemo })),
+)
+const EventBusDemo = lazy(() =>
+  import('@/components/demos/EventBusDemo').then((m) => ({ default: m.EventBusDemo })),
+)
 
 type Props = { work: Work; index: number; className?: string; style?: React.CSSProperties }
 
@@ -16,7 +20,10 @@ export function WorkCard({ work, index, className, style }: Props) {
 
   return (
     <article
-      className={cn('work-card group relative flex w-full flex-col gap-5 md:w-[560px] md:shrink-0', className)}
+      className={cn(
+        'work-card group relative flex w-full flex-col gap-5 md:w-[560px] md:shrink-0',
+        className,
+      )}
       style={style}
       aria-labelledby={`work-${work.slug}-title`}
     >
@@ -69,7 +76,10 @@ export function WorkCard({ work, index, className, style }: Props) {
         <div className="eyebrow">
           {work.year} · {work.type}
         </div>
-        <h3 id={`work-${work.slug}-title`} className="text-[26px] font-semibold leading-tight tracking-[-.02em] text-text">
+        <h3
+          id={`work-${work.slug}-title`}
+          className="text-[26px] font-semibold leading-tight tracking-[-.02em] text-text"
+        >
           {work.title}
         </h3>
         <p className="text-[15px] leading-snug text-text-2">{work.hook}</p>
@@ -92,17 +102,29 @@ export function WorkCard({ work, index, className, style }: Props) {
               rel="noopener noreferrer"
               className="link-underline inline-flex items-center gap-1 text-text-2"
             >
-              Live <ArrowUpRight size={12} aria-hidden="true" />
+              {work.liveLabel ?? 'Live'} <ArrowUpRight size={12} aria-hidden="true" />
             </a>
           )}
-          <a
-            href={work.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-underline inline-flex items-center gap-1 text-text-2"
-          >
-            Source <ArrowUpRight size={12} aria-hidden="true" />
-          </a>
+          {work.video && (
+            <a
+              href={work.video}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline inline-flex items-center gap-1 text-text-2"
+            >
+              Video <ArrowUpRight size={12} aria-hidden="true" />
+            </a>
+          )}
+          {work.source && (
+            <a
+              href={work.source}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-underline inline-flex items-center gap-1 text-text-2"
+            >
+              Source <ArrowUpRight size={12} aria-hidden="true" />
+            </a>
+          )}
         </div>
       </div>
     </article>

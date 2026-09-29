@@ -7,8 +7,12 @@ import { startScroll, stopScroll } from '@/lib/lenis'
 import { gsap, useGSAP, NO_PREF, REDUCED } from '@/lib/gsap'
 import { prefersReducedMotion } from '@/lib/reducedMotion'
 
-const SeatLockDemo = lazy(() => import('@/components/demos/SeatLockDemo').then((m) => ({ default: m.SeatLockDemo })))
-const EventBusDemo = lazy(() => import('@/components/demos/EventBusDemo').then((m) => ({ default: m.EventBusDemo })))
+const SeatLockDemo = lazy(() =>
+  import('@/components/demos/SeatLockDemo').then((m) => ({ default: m.SeatLockDemo })),
+)
+const EventBusDemo = lazy(() =>
+  import('@/components/demos/EventBusDemo').then((m) => ({ default: m.EventBusDemo })),
+)
 
 export function CaseStudyPanel() {
   const { slug = '' } = useParams()
@@ -107,7 +111,12 @@ export function CaseStudyPanel() {
 
   return (
     <div className="fixed inset-0 z-[70]" role="presentation">
-      <div ref={backdrop} className="absolute inset-0 bg-bg/70 backdrop-blur-[2px]" onClick={close} aria-hidden="true" />
+      <div
+        ref={backdrop}
+        className="absolute inset-0 bg-bg/70 backdrop-blur-[2px]"
+        onClick={close}
+        aria-hidden="true"
+      />
       <div
         ref={panel}
         role="dialog"
@@ -133,7 +142,10 @@ export function CaseStudyPanel() {
           <div className="cs-reveal eyebrow">
             {item.year} · {item.type} · {item.role}
           </div>
-          <h2 id="cs-title" className="cs-reveal mt-3 text-[34px] font-semibold leading-tight tracking-[-.02em] md:text-[44px]">
+          <h2
+            id="cs-title"
+            className="cs-reveal mt-3 text-[34px] font-semibold leading-tight tracking-[-.02em] md:text-[44px]"
+          >
             {item.title}
           </h2>
           <p className="cs-reveal mt-3 text-[18px] leading-snug text-text-2">{item.hook}</p>
@@ -215,19 +227,29 @@ export function CaseStudyPanel() {
                   rel="noopener noreferrer"
                   className="link-underline inline-flex items-center gap-1 text-text"
                 >
-                  Live <ArrowUpRight size={12} aria-hidden="true" />
+                  {item.liveLabel ?? 'Live'} <ArrowUpRight size={12} aria-hidden="true" />
                 </a>
-              ) : (
-                <span className="text-text-3">Live: not deployed (Compose only)</span>
+              ) : null}
+              {item.video && (
+                <a
+                  href={item.video}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline inline-flex items-center gap-1 text-text"
+                >
+                  Video <ArrowUpRight size={12} aria-hidden="true" />
+                </a>
               )}
-              <a
-                href={item.source}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline inline-flex items-center gap-1 text-text"
-              >
-                Source <ArrowUpRight size={12} aria-hidden="true" />
-              </a>
+              {item.source && (
+                <a
+                  href={item.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline inline-flex items-center gap-1 text-text"
+                >
+                  Source <ArrowUpRight size={12} aria-hidden="true" />
+                </a>
+              )}
             </div>
           </Block>
 
@@ -245,11 +267,15 @@ export function CaseStudyPanel() {
           <nav className="mt-16 grid grid-cols-2 gap-4 border-t border-line pt-6" aria-label="Other projects">
             <Link to={`/work/${prev.slug}`} className="group flex flex-col gap-1">
               <span className="label">← prev</span>
-              <span className="font-semibold text-text transition-colors group-hover:text-accent-2">{prev.title}</span>
+              <span className="font-semibold text-text transition-colors group-hover:text-accent-2">
+                {prev.title}
+              </span>
             </Link>
             <Link to={`/work/${next.slug}`} className="group flex flex-col items-end gap-1 text-right">
               <span className="label">next →</span>
-              <span className="font-semibold text-text transition-colors group-hover:text-accent-2">{next.title}</span>
+              <span className="font-semibold text-text transition-colors group-hover:text-accent-2">
+                {next.title}
+              </span>
             </Link>
           </nav>
         </div>
@@ -258,7 +284,15 @@ export function CaseStudyPanel() {
   )
 }
 
-function Block({ title, className, children }: { title: string; className?: string; children: React.ReactNode }) {
+function Block({
+  title,
+  className,
+  children,
+}: {
+  title: string
+  className?: string
+  children: React.ReactNode
+}) {
   return (
     <section className={`cs-reveal ${className ?? ''}`}>
       <h3 className="eyebrow mb-3">{title}</h3>
@@ -281,7 +315,12 @@ function CodeBlock({ html, file }: { html: string; file?: string }) {
     <div className="relative mt-4">
       <div className="flex items-center justify-between rounded-t-[var(--radius)] border border-b-0 border-line bg-bg-2 px-3 py-1.5">
         <span className="font-mono text-[11px] text-text-3">{file ?? 'snippet'}</span>
-        <button type="button" onClick={copy} className="btn btn-sm !py-0.5 !text-[11px]" aria-label="Copy code">
+        <button
+          type="button"
+          onClick={copy}
+          className="btn btn-sm !py-0.5 !text-[11px]"
+          aria-label="Copy code"
+        >
           {copied ? <Check size={11} aria-hidden="true" /> : <Copy size={11} aria-hidden="true" />}
           {copied ? 'copied' : 'copy'}
         </button>

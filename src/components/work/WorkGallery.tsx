@@ -83,7 +83,7 @@ export function WorkGallery() {
           label="Work"
           id="work-title"
           title="Selected work."
-          sub="Six things I built. Two of them you can poke at without leaving this page."
+          sub={`${work.length} things I built. Two of them you can poke at without leaving this page.`}
         />
       </div>
 
